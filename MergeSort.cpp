@@ -33,3 +33,5 @@ void input()
         cin >> arr[i];
     }
 }
+
+// create function mergeSort
