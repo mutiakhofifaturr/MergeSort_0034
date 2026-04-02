@@ -35,3 +35,56 @@ void input()
 }
 
 // create function mergeSort
+void mergeSort(int low, int high)
+{
+    if (low >= high) // step 1
+    {
+        return; // step 1.a
+    }
+
+    int mid = (low + high) / 2; // step 2
+
+    // step 3 (rekursi)
+    mergeSort(low, mid);       // step 3.a
+    mergeSort(mid + 1, high);  // step 3.b
+
+    // step 4 (merge)
+    int i = low;       // step 4.a
+    int j = mid + 1;   // step 4.b
+    int k = low;       // step 4.c
+
+    while (i <= mid && j <= high) // step 4.d
+    {
+        if (arr[i] <= arr[j]) // step 4.d.i
+        {
+            B[k] = arr[i];
+            i++;
+        }
+        else
+        {
+            B[k] = arr[j];
+            j++;
+        }
+        k++; // step 4.d.ii
+    }
+
+    while (j <= high) // step 4.e
+    {
+        B[k] = arr[j];
+        j++;
+        k = k + 1;
+    }
+
+    while (i <= mid) // step 4.f
+    {
+        B[k] = arr[i];
+        i++;
+        k++;
+    }
+
+    // step 5 (copy ke array utama)
+    for (int x = low; x <= high; x++)
+    {
+        arr[x] = B[x];
+    }
+}
